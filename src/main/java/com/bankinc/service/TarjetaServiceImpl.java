@@ -24,9 +24,12 @@ public class TarjetaServiceImpl implements TarjetaService {
 
     @Override
     public ApiResponse<Tarjeta> generarTarjeta(String idProducto, String primerNombre, String segundoNombre) {
+        if(idProducto.length() != 6) {
+            return new ApiResponse<>("ERROR", "El idProducto debe tener exactamente 6 digitos", null);
+        }
         Optional<Tarjeta> existingTarjeta = tarjetaRepository.findByIdProductoAndNombreTitular(idProducto, primerNombre + " " + segundoNombre);
         if (existingTarjeta.isPresent()) {
-            return new ApiResponse<>("ERROR", "Tarjeta ya existe con el idProducto y titular llave", null);
+            return new ApiResponse<>("ERROR", "Tarjeta ya existe con el idProducto y titular", null);
         }
         String numeroTarjeta = generarNumeroTarjeta(idProducto);
         Tarjeta tarjeta = new Tarjeta();
