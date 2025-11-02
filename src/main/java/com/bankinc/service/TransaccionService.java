@@ -10,4 +10,6 @@ public interface TransaccionService {
     ApiResponse<Transaccion> crearTransaccion(String idTarjeta, BigDecimal precio);
     ApiResponse<Transaccion> obtenerTransaccion(Long id);
     ApiResponse<Transaccion> anularTransaccion(String idTarjeta, Long idTransaccion);
+
+    ApiResponse<Iterable<Transaccion>> obtenerTransaccionesPorTarjeta(String cardId);
 }

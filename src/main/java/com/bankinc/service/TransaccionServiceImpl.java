@@ -112,6 +112,20 @@ public class TransaccionServiceImpl implements TransaccionService {
 
     }
 
+    @Override
+    public ApiResponse<Iterable<Transaccion>> obtenerTransaccionesPorTarjeta(String cardId) {
+        Optional<Tarjeta> tarjeta = tarjetaRepository.findById(cardId);
+        if (tarjeta.isEmpty()) {
+            return new ApiResponse<>("ERROR", "Tarjeta no encontrada", null);
+        } else {
+            Iterable<Transaccion> transacciones = transaccionrepository.findAllByIdTarjeta(cardId);
+            if (!transacciones.iterator().hasNext()) {
+                return new ApiResponse<>("ERROR", "No se encontraron transacciones para esta tarjeta", null);
+            }
+            return new ApiResponse<>("SUCCESS", "Transacciones encontradas", transacciones);
+        }
+    }
+
     public boolean validarCaducidadTransaccion(LocalDateTime fechaTransaccion){
         LocalDateTime ahora = LocalDateTime.now();
         LocalDateTime fechaLimite = fechaTransaccion.plusHours(24);

@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface Transaccionrepository extends JpaRepository<Transaccion, Long> {
 
     Optional<Transaccion> findByIdAndIdTarjeta(Long id, String cardId);
+
+    Iterable<Transaccion> findAllByIdTarjeta(String cardId);
 }

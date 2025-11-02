@@ -49,5 +49,15 @@ public class TransaccionController {
         }
     }
 
+    @GetMapping("/allTransactionsByCard/{cardId}")
+    public ResponseEntity<ApiResponse<Iterable<Transaccion>>> obtenerTransaccionesPorTarjeta(@PathVariable String cardId) {
+        ApiResponse<Iterable<Transaccion>> response = transaccionService.obtenerTransaccionesPorTarjeta(cardId);
+        if ("ERROR".equals(response.getStatus())) {
+            return ResponseEntity.badRequest().body(response);
+        } else {
+            return ResponseEntity.ok(response);
+        }
+    }
+
 
 }
