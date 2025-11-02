@@ -26,7 +26,7 @@ public class TarjetaServiceImpl implements TarjetaService {
     public ApiResponse<Tarjeta> generarTarjeta(String idProducto, String primerNombre, String segundoNombre) {
         Optional<Tarjeta> existingTarjeta = tarjetaRepository.findByIdProductoAndNombreTitular(idProducto, primerNombre + " " + segundoNombre);
         if (existingTarjeta.isPresent()) {
-            return new ApiResponse<>("ERROR", "Tarjeta ya existe con el idProducto y titular", null);
+            return new ApiResponse<>("ERROR", "Tarjeta ya existe con el idProducto y titular llave", null);
         }
         String numeroTarjeta = generarNumeroTarjeta(idProducto);
         Tarjeta tarjeta = new Tarjeta();

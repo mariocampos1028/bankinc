@@ -7,15 +7,15 @@ Simula la gestión de **tarjetas bancarias** y **transacciones** con endpoints R
 
 ## 🚀 Tecnologías utilizadas
 
-- ☕ **Java 21**
-- 🌱 **Spring Boot 3.5.6**
-- 💾 **PostgreSQL 15**
-- 🧩 **Spring Data JPA**
-- 🧰 **Lombok**
-- 🧪 **JUnit 5 / Mockito**
-- 📘 **Swagger (springdoc-openapi)**
-- 🐳 **Docker Compose**
-- ⚙️ **Maven**
+- **Java 21**
+- **Spring Boot 3.5.6**
+- **PostgreSQL 15**
+- **Spring Data JPA**
+- **Lombok**
+- **JUnit 5 / Mockito**
+- **Swagger (springdoc-openapi)**
+- **Docker Compose**
+- **Maven**
 
 ---
 
