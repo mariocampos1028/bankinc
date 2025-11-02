@@ -91,6 +91,9 @@ public class TransaccionServiceImpl implements TransaccionService {
         if (tarjeta.isEmpty()) {
             return new ApiResponse<>("ERROR", "Tarjeta no encontrada", null);
         }else{
+            if(tarjeta.get().getBloqueada()){
+                return new ApiResponse<>("ERROR", "Tarjeta bloqueada", null);
+            }
             Optional<Transaccion> transaccion = transaccionrepository.findByIdAndIdTarjeta(idTransaccion, idTarjeta);
             if (transaccion.isEmpty()) {
                 return new ApiResponse<>("ERROR", "Transaccion no encontrada para la tarjeta proporcionada", null);
