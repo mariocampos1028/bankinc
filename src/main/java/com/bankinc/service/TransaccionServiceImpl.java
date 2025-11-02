@@ -36,6 +36,8 @@ public class TransaccionServiceImpl implements TransaccionService {
             return new ApiResponse<>("ERROR", "Tarjeta no activa", null);
         } else if (validarFechaExpiracion(tarjeta.get().getFechaExpiracion())) {
             return new ApiResponse<>("ERROR", "Tarjeta expirada", null);
+        } else if (precio.compareTo(BigDecimal.ZERO) <= 0) {
+            return new ApiResponse<>("ERROR", "El monto de la transaccion debe ser mayor a cero", null);
         }else{
             if (tarjeta.get().getBalance().compareTo(precio) < 0) {
                 return new ApiResponse<>("ERROR", "Fondos insuficientes", null);
